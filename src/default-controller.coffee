@@ -18,8 +18,8 @@ provide = (res, type, data) ->
 
 controller = (Model) ->
 
-    get: (req, res, next) ->
-        Model.findById req.params.id (err, data) ->
+    show: (req, res, next) ->
+        Model.findById req.params.id, (err, data) ->
             if err?
                 return provide res, 'error', err
             provide res, 'success', data
@@ -36,11 +36,13 @@ controller = (Model) ->
             provide res, 'success', instance
 
     update: (req, res, next) ->
-        Model.findOneAndUpdate req.params.id, stripIllegal req.body, (err, data) ->
+        Model.findOneAndUpdate req.params.id, stripIllegal(req.body), (err, data) ->
             return provide res, 'error', err if err?
             provide res, 'success', data
 
-    detroy: (req, res, next) ->
+    destroy: (req, res, next) ->
         Model.findOneAndRemove req.params.id, (err, data) ->
             return provide res, 'error', err if err?
             provide res, 'success', data
+
+module.exports = controller

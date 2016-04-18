@@ -1,6 +1,6 @@
 stripIllegalFields = (object) ->
 
-    if typeof object is not 'object'
+    if typeof object != 'object'
         return object
 
     result = {}

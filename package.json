@@ -1,14 +1,28 @@
 {
-  "name": "resource-middleware",
+  "name": "resource-pebble",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --compilers coffee:coffee-script/register",
+    "compile": "mkdir -p lib && rm -r lib && mkdir -p lib && coffee --output lib --compile src"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "express": "^4.13.4"
+    "async": "^2.0.0-rc.3",
+    "body-parser": "^1.15.0",
+    "chai": "^3.5.0",
+    "chance": "^1.0.2",
+    "dump-die": "^1.0.0",
+    "express": "^4.13.4",
+    "mocha": "^2.4.5",
+    "mockgoose": "^6.0.2",
+    "mongoose": "^4.4.12",
+    "request": "^2.72.0"
+  },
+  "dependencies": {
+    "coffee-script": "^1.10.0",
+    "pluralize": "^1.2.1"
   }
 }
