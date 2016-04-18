@@ -81,7 +81,9 @@ for express. The functionality required for this is enabled in this module.
 To enable custom throughout your app you can use the stripped down
 implementation specified below.
 
-### Response api
+### Response API
+Note: This is not enabled by by default, but will be used if available.
+
 `res.response(responseType:String, data: ANY)`
 
 #### Stripped down implementation
