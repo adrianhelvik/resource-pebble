@@ -84,7 +84,7 @@ implementation specified below.
 ### Response API
 Note: This is not enabled by by default, but will be used if available.
 
-`res.response(responseType:String, data: ANY)`
+`res.provide(responseType:String, data: ANY)`
 
 #### Stripped down implementation
 ```javascript
