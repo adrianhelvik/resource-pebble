@@ -81,7 +81,8 @@ The default responses are on the form:
 The responses can be changed by extending the express response object with
 a provide method. I am planning to develop response provider middleware
 for express. The functionality required for this is enabled in this module.
-To enable custom throughout your app.
+To enable custom throughout your app you can use the stripped down
+implementation specified below.
 
 ### Response api
 `res.response(responseType:String, data: ANY)`
