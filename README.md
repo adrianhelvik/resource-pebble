@@ -70,11 +70,11 @@ Responses
 ---------
 
 The default responses are on the form:
-```json
+```
 {
-    status: Number,
-    success: Boolean,
-    data: ANY
+    "status": Number,
+    "success": Boolean,
+    "data": ANY
 }
 ```
 
