@@ -31,12 +31,19 @@ resource = (Model, options) ->
 
     pluralized = pluralize Model.modelName
 
+    # Parse options.only
+    if not options.only?
+        options.only = ['show', 'all', 'create', 'update', 'delete']
+    only = {}
+    for method in options.only
+        only[method] = true
+
     # Register the routes
-    router.get "/#{pluralized}/:id", middleware.show, controller.show
-    router.get "/#{pluralized}/", middleware.all, controller.all
-    router.put "/#{pluralized}/:id", middleware.update, controller.update
-    router.post "/#{pluralized}/", middleware.create, controller.create
-    router.delete "/#{pluralized}/", middleware.destroy, controller.destroy
+    only.show    and router.get "/#{pluralized}/:id", middleware.show, controller.show
+    only.all     and router.get "/#{pluralized}/", middleware.all, controller.all
+    only.update  and router.put "/#{pluralized}/:id", middleware.update, controller.update
+    only.create  and router.post "/#{pluralized}/", middleware.create, controller.create
+    only.destroy and router.delete "/#{pluralized}/", middleware.destroy, controller.destroy
 
     # TODO: Add check for body-parser middleware
 

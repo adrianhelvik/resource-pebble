@@ -1,5 +1,10 @@
+dd = require 'dump-die'
+
 ###
-# Used for testing purposes
+# Used in the tests
+#
+# Sets up an express server and creates the Article model
+# and a
 ###
 exports = module.exports = (callback) ->
     EventEmitter = require 'events'
@@ -27,8 +32,8 @@ exports = module.exports = (callback) ->
 
     useResource = ->
         # Create resource for Article model
-        Resource = require '../src/resource'
-        app.use new Resource(Article)
+        resourcePebble = require '../src/resource'
+        app.use new resourcePebble Article
 
     listen = ->
         # Listen for requests
@@ -37,14 +42,14 @@ exports = module.exports = (callback) ->
 
     events.on 'mongoose loaded', (err) ->
         if err?
-            console.log err
+            console.log 'Mongoose failed to load'
+            throw err
         useResource()
         listen()
 
     events.on 'express loaded', (err) ->
         if err?
-            console.log err
-            return callback err
+            throw err
         console.log 'Example app started on port ' + 5000
 
         callback
@@ -54,5 +59,6 @@ exports = module.exports = (callback) ->
             models:
                 Article: Article
 
+# Run the server if file is directly executed
 if process.argv[1] is __filename
     exports ->
