@@ -1,4 +1,3 @@
-dd = require 'dump-die'
 Router = require('express').Router
 pluralize = require 'pluralize'
 

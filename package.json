@@ -1,6 +1,6 @@
 {
   "name": "resource-pebble",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -14,7 +14,6 @@
     "body-parser": "^1.15.0",
     "chai": "^3.5.0",
     "chance": "^1.0.2",
-    "dump-die": "^1.0.0",
     "express": "^4.13.4",
     "mocha": "^2.4.5",
     "mockgoose": "^6.0.2",
