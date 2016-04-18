@@ -84,8 +84,7 @@ for express. The functionality required for this is enabled in this module.
 To enable custom throughout your app.
 
 ### Response api
-```
-res.response(responseType:String, data: ANY)
+`res.response(responseType:String, data: ANY)`
 
 #### Stripped down implementation
 ```javascript
