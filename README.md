@@ -1,6 +1,3 @@
-About resource pebble
----------------------
-
 This module greatly simplify rest API creation. Supply the constructor with
 a mongoose model and an express router is generated from the plural name of
 the model. Given a model named Article, app.use(resource(Article)) will
