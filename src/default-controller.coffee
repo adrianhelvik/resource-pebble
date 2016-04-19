@@ -6,21 +6,21 @@ stripIllegal = require './stripIllegalFields'
 provide = (res, type, data) ->
     try
         if res.provide?
-            res.provide type, data
-
-        else if type is 'success'
-            res.status(200).json
-                status: 200,
-                success: true,
-                data: data
-
-        else if type is 'error'
-            res.status(500).json
-                status: 500,
-                success: false,
-                data: data
+            return res.provide type, data
     catch err
         throw new Error "#{type} is not a registered response, but is required for resource-pebble"
+
+    if type is 'success'
+        res.status(200).json
+            status: 200,
+            success: true,
+            data: data
+
+    else if type is 'error'
+        res.status(500).json
+            status: 500,
+            success: false,
+            data: data
 
 ###
 # Constructor function for the default controller
