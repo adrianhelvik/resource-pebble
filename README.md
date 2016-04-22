@@ -119,6 +119,19 @@ responses.error = function (data) {
 TODO
 ----
 
+### Default controller
+* Create sad path tests
+* Create resource not found response for show-route
+* Create nested resources
+    * If model contains references to other models, create nested resources recursively
+    * one -> many
+        * create all endpoints
+    * one -> one
+        * create update and destroy endpoints
+
+### Resource pebble
 * Create tests for middleware
 * Enable multiple methods per middleware (as in `middleware: { 'create update': authMiddleware }`)
+
+### Misc.
 * Create response provider module

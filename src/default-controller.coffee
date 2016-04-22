@@ -12,15 +12,23 @@ provide = (res, type, data) ->
 
     if type is 'success'
         res.status(200).json
-            status: 200,
-            success: true,
+            status: 200
+            success: true
             data: data
 
     else if type is 'error'
         res.status(500).json
-            status: 500,
-            success: false,
+            status: 500
+            success: false
             data: data
+
+    else if type is 'created'
+        res.status(201).json
+            status: 201
+            success: true
+            data: data
+
+    else throw new Error "Error in resource-pebble/default-controller. Response '#{type}' not defined."
 
 ###
 # Constructor function for the default controller
@@ -45,7 +53,7 @@ controller = (Model) ->
         instance = new Model stripIllegal req.body
         instance.save (err) ->
             return provide res, 'error', err if err?
-            provide res, 'success', instance
+            provide res, 'created', instance
 
     # PUT /models
     update: (req, res, next) ->
