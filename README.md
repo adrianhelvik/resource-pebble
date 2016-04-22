@@ -115,6 +115,7 @@ responses.error = function (data) {
 ### Required responses
 * error
 * success
+* created
 
 TODO
 ----
