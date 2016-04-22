@@ -1,6 +1,6 @@
 {
     "name": "resource-pebble",
-    "version": "1.0.13",
+    "version": "1.0.14",
     "description": "",
     "main": "index.js",
     "keywords": ["resource", "rest resource", "api", "rest", "restful", "api prototype", "rapid api development"],

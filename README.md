@@ -42,7 +42,7 @@ var bodyParser = require('body-parser');
 var resourcePebble = require('resource-pebble')
 
 // body-parser or a similar middleware is required
-app.use(bodyParser.urlencoded, { extended: false });
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // Find a mongoose model for the resource
