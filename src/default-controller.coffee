@@ -28,6 +28,12 @@ provide = (res, type, data) ->
             success: true
             data: data
 
+    else if type is 'not found'
+        res.status(404).json
+            status: 404
+            success: false
+            data: data
+
     else throw new Error "Error in resource-pebble/default-controller. Response '#{type}' not defined."
 
 ###
@@ -39,12 +45,24 @@ controller = (Model) ->
     show: (req, res, next) ->
         Model.findById req.params.id, (err, data) ->
             if err?
-                return provide res, 'error', err
-            provide res, 'success', data
+                provide res, 'error', err
+            else if data
+                provide res, 'success', data
+            else
+                provide res, 'not found', data
+
             
     # GET /models
     all: (req, res, next) ->
-        Model.find {}, (err, data) ->
+        query = Model.find {}
+
+        schema = Model.schema.tree
+
+        Object.keys( schema ).forEach (field) ->
+            if schema[field].type and schema[field].type.schemaName is 'ObjectId'
+                query.populate(field)
+        
+        query.exec (err, data) ->
             return provide res, 'error', err if err?
             provide res, 'success', data
 
@@ -52,7 +70,8 @@ controller = (Model) ->
     create: (req, res, next) ->
         instance = new Model stripIllegal req.body
         instance.save (err) ->
-            return provide res, 'error', err if err?
+            if err?
+                return provide res, 'error', err
             provide res, 'created', instance
 
     # PUT /models

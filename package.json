@@ -1,11 +1,12 @@
 {
     "name": "resource-pebble",
-    "version": "1.0.14",
+    "version": "1.0.15",
     "description": "",
     "main": "index.js",
     "keywords": ["resource", "rest resource", "api", "rest", "restful", "api prototype", "rapid api development"],
     "scripts": {
         "test": "mocha --compilers coffee:coffee-script/register",
+        "watch:test": "mocha --compilers coffee:coffee-script/register --watch",
         "compile": "mkdir -p lib && rm -r lib && mkdir -p lib && coffee --output lib --compile src"
     },
     "author": "",
