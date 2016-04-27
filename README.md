@@ -1,7 +1,7 @@
-This module greatly simplify rest API creation. Supply the constructor with
+This module is made to simplify rest API creation. Supply the constructor with
 a mongoose model and an express router is generated from the plural name of
 the model. Given a model named Article, app.use(resource(Article)) will
-generate all the routes listed below. (With no authentication)
+generate all the routes listed below. (With no authentication).
 
 Controller to route relation
 ----------------------------
