@@ -1,7 +1,11 @@
 {
   "name": "resource-pebble",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "description": "",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/adrianhelvik/resource-pebble.git"
+  },
   "main": "index.js",
   "keywords": [
     "resource",
