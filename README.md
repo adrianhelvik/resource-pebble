@@ -121,7 +121,6 @@ TODO
 ----
 
 ### Default controller
-* Create sad path tests
 * Create resource not found response for show-route
 * Create nested resources
     * If model contains references to other models, create nested resources recursively
