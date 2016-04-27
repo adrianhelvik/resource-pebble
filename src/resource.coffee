@@ -38,11 +38,13 @@ resource = (Model, options) ->
         only[method] = true
 
     # Register the routes
-    only.show    and router.get "/#{pluralized}/:id", middleware.show, controller.show
-    only.all     and router.get "/#{pluralized}/", middleware.all, controller.all
-    only.update  and router.put "/#{pluralized}/:id", middleware.update, controller.update
-    only.create  and router.post "/#{pluralized}/", middleware.create, controller.create
-    only.destroy and router.delete "/#{pluralized}/", middleware.destroy, controller.destroy
+    only.show    and router.get    "/#{pluralized}/:id", middleware.show,    controller.show
+    only.all     and router.get    "/#{pluralized}/",    middleware.all,     controller.all
+    only.update  and router.put    "/#{pluralized}/:id", middleware.update,  controller.update
+    only.create  and router.post   "/#{pluralized}/",    middleware.create,  controller.create
+    only.destroy and router.delete "/#{pluralized}/",    middleware.destroy, controller.destroy
+
+    # TODO: Register nested resources for Arrays and ObjectID's
 
     # TODO: Add check for body-parser middleware
 
