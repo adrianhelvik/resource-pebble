@@ -32,7 +32,7 @@ resource = (Model, options) ->
 
     # Parse options.only
     if not options.only?
-        options.only = ['show', 'all', 'create', 'update', 'delete']
+        options.only = ['show', 'all', 'create', 'update', 'destroy']
     only = {}
     for method in options.only
         only[method] = true
