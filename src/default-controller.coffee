@@ -51,7 +51,6 @@ controller = (Model) ->
             else
                 provide res, 'not found', data
 
-            
     # GET /models
     all: (req, res, next) ->
         query = Model.find {}
@@ -61,7 +60,7 @@ controller = (Model) ->
         Object.keys( schema ).forEach (field) ->
             if schema[field].type and schema[field].type.schemaName is 'ObjectId'
                 query.populate(field)
-        
+
         query.exec (err, data) ->
             return provide res, 'error', err if err?
             provide res, 'success', data

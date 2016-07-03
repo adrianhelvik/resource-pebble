@@ -1,10 +1,10 @@
 {
   "name": "resource-pebble",
-  "version": "1.0.19",
+  "version": "1.0.20",
   "description": "",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/adrianhelvik/resource-pebble.git"
+    "type": "git",
+    "url": "https://github.com/adrianhelvik/resource-pebble.git"
   },
   "main": "index.js",
   "keywords": [
@@ -29,6 +29,7 @@
     "chai": "^3.5.0",
     "chance": "^1.0.2",
     "coffee-script": "^1.10.0",
+    "dump-die": "^1.0.0",
     "express": "^4.13.4",
     "mocha": "^2.4.5",
     "mockgoose": "^6.0.2",
@@ -36,6 +37,8 @@
     "request": "^2.72.0"
   },
   "dependencies": {
+    "bson": "^0.4.23",
+    "mongodb": "^2.1.18",
     "pluralize": "^1.2.1"
   }
 }

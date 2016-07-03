@@ -1,8 +1,8 @@
 var mongoose = require('mongoose');
 var mockgoose = require('mockgoose');
 var chai = require('chai');
-var expect = chai.expect
-var chance = new require('chance')()
+var expect = chai.expect;
+var chance = new require('chance')();
 var factories = require('../example/factories');
 var async = require('async');
 var defaultController = require('../src/default-controller');
@@ -15,13 +15,13 @@ describe('Nested resources', () => {
      */
 
     var Wallet = models.Wallet;
-    var Bag = models.Bag
+    var Bag = models.Bag;
     var bagCtrl = defaultController(Bag);
 
     before((done) => {
         mockgoose(mongoose).then(() => {
             mongoose.connect('mongodb://example.com/testingDB', (err) => {
-                done(err)
+                done(err);
             });
         });
     });
@@ -37,7 +37,7 @@ describe('Nested resources', () => {
     /*
      * Tests
      */
-    
+
     it('can create nested resources one->many');
 
     it('can create nested resources one->one');
