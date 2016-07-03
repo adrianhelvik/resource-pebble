@@ -133,20 +133,22 @@ describe 'default controller, happy path', ->
                 articleCtrl.update req, res
 
     describe '.destroy', ->
-        it 'deletes an article', ->
+        it 'deletes an article', (done) ->
 
             # Arrange
-            article = factories.article.save()
+            factories.article().save()
+                .then (article) ->
 
-            req =
-                params:
-                    id: article._id
-            res =
-                status: (status) ->
-                    res
-                json: (response) ->
-                    expect(response.status).to.equal(200)
-                    Article.findOne {}, (err, _article) ->
-                        expect(article).not.to.exist
+                    req =
+                        params:
+                            id: article._id
+                    res =
+                        status: (status) ->
+                            res
+                        json: (response) ->
+                            expect(response.status).to.equal(200)
+                            Article.findOne {}, (err, _article) ->
+                                expect(_article).not.to.exist
+                                done()
 
-            articleCtrl.destroy req, res
+                    articleCtrl.destroy req, res
