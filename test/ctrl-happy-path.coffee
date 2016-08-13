@@ -1,22 +1,23 @@
-dd = require 'dump-die'
-mongoose = require 'mongoose'
-mockgoose = require 'mockgoose'
-chai = require 'chai'
-expect = chai.expect
-chance = new require('chance')()
-factories = require '../example/factories'
-async = require 'async'
-
-if ! mongoose.Promise?
-    mongoose.Promise = Promise
+dd               = require 'dump-die'
+mongoose         = require 'mongoose'
+mockgoose        = require 'mockgoose'
+chai             = require 'chai'
+expect           = chai.expect
+chance           = new require('chance')()
+factories        = require '../example/factories'
+async            = require 'async'
+mongoose.Promise = Promise
 
 describe 'default controller, happy path', ->
 
     defaultController = require '../src/default-controller'
-    models = require '../example/models'
-    Article = models.Article
-    articleCtrl = defaultController Article
+    models            = require '../example/models'
+    Article           = models.Article
+    articleCtrl       = defaultController Article
 
+    ##
+    # Before the tests connect mongoose to mockgoose
+    ##
     before (done) ->
         mockgoose(mongoose).then ->
             mongoose.connect 'mongodb://example.com/testingDB', (err) ->
@@ -24,10 +25,16 @@ describe 'default controller, happy path', ->
                     throw err
                 done()
 
+    ##
+    # After all tests disconnect mongoose
+    ##
     after (done) ->
         mongoose.disconnect (err) ->
             done err
 
+    ##
+    # Reset mockgoose before each test
+    ##
     beforeEach (done) ->
         mockgoose.reset done
 
@@ -105,11 +112,9 @@ describe 'default controller, happy path', ->
         it 'updates an article', (done) ->
 
             # Arrange
-            factories.article().save((err, article) ->
+            promise = factories.article().save (err, article) ->
                 if err?
                     throw err
-                return article
-            ).then (article) ->
 
                 newTitle = 'new title!!'
 
@@ -131,6 +136,11 @@ describe 'default controller, happy path', ->
                             done()
 
                 articleCtrl.update req, res
+
+            promise.catch((err) ->
+                console.log 'CAUGHT ERROR', err
+                done(err)
+            )
 
     describe '.destroy', ->
         it 'deletes an article', (done) ->

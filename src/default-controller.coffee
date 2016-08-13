@@ -57,7 +57,7 @@ controller = (Model) ->
 
         schema = Model.schema.tree
 
-        Object.keys( schema ).forEach (field) ->
+        Object.keys(schema).forEach (field) ->
             if schema[field].type and schema[field].type.schemaName is 'ObjectId'
                 query.populate(field)
 
@@ -76,7 +76,8 @@ controller = (Model) ->
     # PUT /models
     update: (req, res, next) ->
         Model.findOneAndUpdate req.params.id, stripIllegal(req.body), (err, data) ->
-            return provide res, 'error', err if err?
+            if err?
+                return provide res, 'error'
             provide res, 'success', data
 
     # DELETE /models/:id

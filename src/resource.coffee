@@ -1,5 +1,6 @@
 Router = require('express').Router
 pluralize = require 'pluralize'
+paramCase = require 'param-case'
 
 resource = (Model, options) ->
 
@@ -28,7 +29,7 @@ resource = (Model, options) ->
             middleware[method] = options.middleware[method]
         else middleware[method] = []
 
-    pluralized = pluralize Model.modelName
+    pluralized = paramCase pluralize Model.modelName
 
     # Parse options.only
     if not options.only?

@@ -1,44 +1,45 @@
 {
-  "name": "resource-pebble",
-  "version": "1.0.23",
-  "description": "",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/adrianhelvik/resource-pebble.git"
-  },
-  "main": "index.js",
-  "keywords": [
-    "resource",
-    "rest resource",
-    "api",
-    "rest",
-    "restful",
-    "api prototype",
-    "rapid api development"
-  ],
-  "scripts": {
-    "test": "mocha --compilers coffee:coffee-script/register",
-    "watch:test": "mocha --compilers coffee:coffee-script/register --watch",
-    "compile": "mkdir -p lib && rm -r lib && mkdir -p lib && coffee --output lib --compile src"
-  },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "async": "^2.0.0-rc.3",
-    "body-parser": "^1.15.0",
-    "chai": "^3.5.0",
-    "chance": "^1.0.2",
-    "coffee-script": "^1.10.0",
-    "dump-die": "^1.0.0",
-    "express": "^4.13.4",
-    "mocha": "^2.4.5",
-    "mockgoose": "^6.0.2",
-    "mongoose": "^4.4.12",
-    "request": "^2.72.0"
-  },
-  "dependencies": {
-    "bson": "^0.4.23",
-    "mongodb": "^2.1.18",
-    "pluralize": "^1.2.1"
-  }
+    "name": "resource-pebble",
+    "version": "2.0.0",
+    "description": "",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/adrianhelvik/resource-pebble.git"
+    },
+    "main": "index.js",
+    "keywords": [
+        "resource",
+        "rest resource",
+        "api",
+        "rest",
+        "restful",
+        "api prototype",
+        "rapid api development"
+    ],
+    "scripts": {
+        "test": "mocha --compilers coffee:coffee-script/register",
+        "watch:test": "mocha --compilers coffee:coffee-script/register --watch",
+        "compile": "mkdir -p lib && rm -r lib && mkdir -p lib && coffee --output lib --compile src"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "async": "^2.0.0-rc.3",
+        "body-parser": "^1.15.0",
+        "chai": "^3.5.0",
+        "chance": "^1.0.2",
+        "coffee-script": "^1.10.0",
+        "dump-die": "^1.0.0",
+        "express": "^4.13.4",
+        "mocha": "^2.4.5",
+        "mockgoose": "^6.0.2",
+        "mongoose": "^4.4.12",
+        "request": "^2.72.0"
+    },
+    "dependencies": {
+        "bson": "^0.4.23",
+        "mongodb": "^2.1.18",
+        "param-case": "^2.1.0",
+        "pluralize": "^1.2.1"
+    }
 }
